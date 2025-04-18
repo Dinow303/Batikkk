@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--  Primary Palette  -->
+    <color name="primary_main">#06A77D</color>
+    <color name="primary_dark">#005377</color>
+    <color name="primary_soft">#D5C67A</color>
+    <color name="primary_deep">#052F5F</color>
+    <color name="primary_last">#F1A208</color>
+
+    <!-- Accent / Secondary -->
+    <color name="accent_main">#F1A208</color>
+
+    <!-- Grayscale & Text -->
+    <color name="white">#FFFFFF</color>
+    <color name="black">#000000</color>
+</resources>

@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <!--Top Tools-->
+    <LinearLayout
+        android:id="@+id/topToolbar"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:background="#005377"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+    <LinearLayout
+        android:id="@+id/pen"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:textAlignment="center"
+        android:gravity="center"
+        tools:layout_editor_absoluteX="90dp"
+        tools:layout_editor_absoluteY="522dp"
+        android:background="@drawable/btn_primary"
+        android:layout_marginHorizontal="4dp"
+        android:layout_marginTop="3dp"
+        android:layout_marginBottom="3dp">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_brush_name"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/eraser"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:textAlignment="center"
+        android:orientation="horizontal"
+        android:gravity="center"
+        tools:layout_editor_absoluteX="90dp"
+        tools:layout_editor_absoluteY="522dp"
+        android:background="@drawable/btn_primary"
+        android:layout_marginHorizontal="4dp"
+        android:layout_marginTop="3dp"
+        android:layout_marginBottom="3dp">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_brush_eraser"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/brushSize"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:background="@drawable/btn_primary"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:layout_marginTop="3dp"
+        android:layout_marginBottom="3dp"
+        android:layout_marginHorizontal="4dp">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_brush_size"
+            android:layout_gravity="center"/>
+    </LinearLayout>
+
+
+    </LinearLayout>
+
+
+    <!--Canvas-->
+    <com.example.batikkk.MyCanvasView
+        android:id="@+id/myCanvasView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toBottomOf="@id/topToolbar"
+        app:layout_constraintBottom_toTopOf="@id/bottomToolbar"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <!--Bellow Tools-->
+    <LinearLayout
+        android:id="@+id/bottomToolbar"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:background="#005377"
+        android:gravity="center"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <LinearLayout
+            android:id="@+id/clear"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:background="@drawable/btn_primary"
+            android:textAlignment="center"
+            tools:layout_editor_absoluteX="90dp"
+            tools:layout_editor_absoluteY="522dp"
+            android:gravity="center"
+            android:layout_marginHorizontal="4dp"
+            android:layout_marginTop="3dp"
+            android:layout_marginBottom="3dp">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_brush_clear"/>
+        </LinearLayout>
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

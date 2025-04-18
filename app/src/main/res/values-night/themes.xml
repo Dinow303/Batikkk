@@ -1,0 +1,25 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <style name="Theme.Batikkk" parent="Theme.AppCompat.DayNight.NoActionBar">
+        <!-- Primary -->
+        <item name="colorPrimary">#06A77D</item>
+        <item name="colorPrimaryVariant">#005377</item>
+        <item name="colorOnPrimary">#FFFFFF</item>
+
+        <!-- Secondary -->
+        <item name="colorSecondary">#F1A208</item>
+        <item name="colorSecondaryVariant">#D5C67A</item>
+        <item name="colorOnSecondary">#000000</item>
+
+        <!-- Background & Surface -->
+        <item name="android:colorBackground">#FFFFFF</item>
+        <item name="colorSurface">#FFFFFF</item>
+        <item name="colorOnSurface">#052F5F</item>
+
+        <!-- Optional: status bar & navigation bar -->
+        <item name="android:statusBarColor">#005377</item>
+        <item name="android:navigationBarColor">#005377</item>
+
+        <!-- Typography (optional) -->
+        <item name="android:textColor">#052F5F</item>
+    </style>
+</resources>
