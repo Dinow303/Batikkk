@@ -20,7 +20,7 @@ public class Design extends AppCompatActivity {
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_design);
 
-        btnScanner = findViewById(R.id.btsScanner);
+        btnScanner = findViewById(R.id.btnScanner);
         btnGambar = findViewById(R.id.btnGambar);
 
         btnScanner.setOnClickListener(v -> {
