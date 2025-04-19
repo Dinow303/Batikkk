@@ -121,6 +121,25 @@
             android:layout_height="wrap_content"
             android:src="@drawable/ic_brush_clear"/>
         </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/shapes"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:background="@drawable/btn_primary"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:layout_marginTop="3dp"
+            android:layout_marginBottom="3dp"
+            android:layout_marginHorizontal="4dp">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_shapes"
+                android:layout_gravity="center"/>
+        </LinearLayout>
+
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
