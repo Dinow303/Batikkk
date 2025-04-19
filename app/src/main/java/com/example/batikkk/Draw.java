@@ -16,6 +16,7 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 
 public class Draw extends AppCompatActivity {
     MyCanvasView myCanvasView;
@@ -33,6 +34,8 @@ public class Draw extends AppCompatActivity {
         DisplayMetrics metrics = new DisplayMetrics();
         getWindowManager().getDefaultDisplay().getMetrics(metrics);
         myCanvasView.init(metrics);
+
+        getWindow().setNavigationBarColor(ContextCompat.getColor(this, R.color.primary_dark));
 
         //Tools
         findViewById(R.id.clear).setOnClickListener(new View.OnClickListener() {
@@ -86,7 +89,7 @@ public class Draw extends AppCompatActivity {
         seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-                if (progress < 1) progress = 1; // jangan nol
+                if (progress < 1) progress = 1;
                 sizeText.setText("Ukuran: " + progress);
             }
 
