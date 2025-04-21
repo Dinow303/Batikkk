@@ -18,6 +18,47 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
 
+
+        <LinearLayout
+            android:id="@+id/undo"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:textAlignment="center"
+            android:gravity="center"
+            tools:layout_editor_absoluteX="90dp"
+            tools:layout_editor_absoluteY="522dp"
+            android:background="@drawable/btn_primary"
+            android:layout_marginHorizontal="4dp"
+            android:layout_marginTop="3dp"
+            android:layout_marginBottom="3dp">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_undo"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/redo"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:textAlignment="center"
+            android:gravity="center"
+            tools:layout_editor_absoluteX="90dp"
+            tools:layout_editor_absoluteY="522dp"
+            android:background="@drawable/btn_primary"
+            android:layout_marginHorizontal="4dp"
+            android:layout_marginTop="3dp"
+            android:layout_marginBottom="3dp">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_redo"/>
+
+        </LinearLayout>
+
     <LinearLayout
         android:id="@+id/pen"
         android:layout_width="50dp"

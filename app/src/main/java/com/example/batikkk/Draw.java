@@ -56,6 +56,8 @@ public class Draw extends AppCompatActivity {
         findViewById(R.id.pen).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                myCanvasView.setToolMode(MyCanvasView.MODE_PEN);
+                myCanvasView.setBrushSize(15);
                 myCanvasView.pen();
                 Toast.makeText(Draw.this, "Mode pena aktif!", Toast.LENGTH_SHORT).show();
             }
@@ -64,10 +66,27 @@ public class Draw extends AppCompatActivity {
         findViewById(R.id.eraser).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                myCanvasView.setToolMode(MyCanvasView.MODE_ERASER);
+                myCanvasView.setBrushSize(50);
                 myCanvasView.eraser();
                 Toast.makeText(Draw.this,"Mode Penghapus Aktif", Toast.LENGTH_SHORT).show();
             }
         });
+
+        findViewById((R.id.undo)).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public  void  onClick(View view) {
+                myCanvasView.undo();
+            }
+        });
+
+        findViewById((R.id.redo)).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public  void  onClick(View view) {
+                myCanvasView.redo();
+            }
+        });
+
 
         LinearLayout brushSizeBtn = findViewById(R.id.brushSize);
         brushSizeBtn.setOnClickListener(v -> showBrushSizeDialog());
@@ -80,14 +99,20 @@ public class Draw extends AppCompatActivity {
             popup.setOnMenuItemClickListener(item -> {
                 int id = item.getItemId();
                 if (id == R.id.shape_line) {
+                    myCanvasView.setToolMode(MyCanvasView.MODE_LINE);
+                    myCanvasView.setBrushSize(15);
                     myCanvasView.shapeLine();
                     Toast.makeText(this, "Mode: Garis", Toast.LENGTH_SHORT).show();
                     return true;
                 } else if (id == R.id.shape_rect) {
+                    myCanvasView.setToolMode(MyCanvasView.MODE_RECT);
+                    myCanvasView.setBrushSize(15);
                     myCanvasView.shapeRect();
                     Toast.makeText(this, "Mode: Kotak", Toast.LENGTH_SHORT).show();
                     return true;
                 } else if (id == R.id.shape_circle) {
+                    myCanvasView.setToolMode(MyCanvasView.MODE_CIRCLE);
+                    myCanvasView.setBrushSize(15);
                     myCanvasView.shapeCircle();
                     Toast.makeText(this, "Mode: Lingkaran", Toast.LENGTH_SHORT).show();
                     return true;

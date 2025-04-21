@@ -4,6 +4,7 @@ import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Color;
+import android.graphics.DashPathEffect;
 import android.graphics.Paint;
 import android.graphics.Path;
 import android.graphics.PointF;
@@ -33,7 +34,7 @@ public class MyCanvasView extends View {
     public static final int BACKGROUND_COLOR = Color.WHITE;
 
     private ArrayList<FingerPath> paths = new ArrayList<>();
-    private List<DrawPath> undonePaths = new ArrayList<>();
+    private ArrayList<FingerPath> undonePaths = new ArrayList<>();
     private Path mPath;
 
     private Bitmap mBitmap;
@@ -46,12 +47,19 @@ public class MyCanvasView extends View {
     private float mx, my;
     private float cursorX = -1, cursorY = -1;
     private boolean showCursor = false;
-    // Titik awal dan akhir untuk bentuk
     private PointF startPoint = new PointF();
     private boolean isDrawingShape = false;
+    private Paint previewPaint;
+    private boolean isDrawing = false;
+    private int lastUsedColor = Color.BLACK;
 
     public MyCanvasView(Context context, AttributeSet attrs) {
         super(context, attrs);
+        previewPaint = new Paint();
+        previewPaint.setColor(Color.GRAY);
+        previewPaint.setStrokeWidth(3);
+        previewPaint.setStyle(Paint.Style.STROKE);
+        previewPaint.setPathEffect(new DashPathEffect(new float[]{10, 10}, 0)); // garis putus-putus
         setupPaint();
     }
 
@@ -107,7 +115,44 @@ public class MyCanvasView extends View {
     public void clearCanvas() {
         paths.clear();
         mCanvas.drawColor(BACKGROUND_COLOR);
-        pen();
+        invalidate();
+    }
+
+    public void undo() {
+        if (!paths.isEmpty()) {
+            FingerPath last = paths.remove(paths.size() - 1);
+            undonePaths.add(last);
+            invalidate();
+        }
+    }
+
+    public void redo() {
+        if (!undonePaths.isEmpty()) {
+            FingerPath path = undonePaths.remove(undonePaths.size() - 1);
+            paths.add(path);
+            invalidate();
+        }
+    }
+
+    public void setToolMode(int mode) {
+        // Kalau sebelumnya pakai pen, simpan warnanya
+        if (currentMode != MODE_ERASER) {
+            lastUsedColor = Color.BLACK;
+        }
+
+        currentMode = mode;
+
+        // Kalau sekarang masuk mode eraser
+        if (mode == MODE_ERASER) {
+            currentColor = Color.WHITE; // atau warna background kamu
+        }
+
+        // Kalau sekarang masuk mode shape atau pen, dan sebelumnya pakai eraser
+        if (mode != MODE_ERASER && currentColor == Color.WHITE) {
+            currentColor = lastUsedColor;
+        }
+
+        showCursor = true;
         invalidate();
     }
 
@@ -151,9 +196,22 @@ public class MyCanvasView extends View {
 
         if (showCursor && currentMode != MODE_LINE && currentMode != MODE_RECT && currentMode != MODE_CIRCLE) {
             Paint cursorPaint = new Paint();
-            cursorPaint.setColor(Color.RED);
+            cursorPaint.setColor(Color.parseColor("#888888"));
             cursorPaint.setStyle(Paint.Style.FILL);
-            canvas.drawCircle(mx, my, 10, cursorPaint);
+            canvas.drawCircle(mx, my, currentBrushSize / 2f, cursorPaint);
+        } else if (showCursor && (currentMode == MODE_LINE || currentMode == MODE_RECT || currentMode == MODE_CIRCLE)) {
+            switch (currentMode) {
+                case MODE_LINE:
+                    canvas.drawLine(startX, startY, mx, my, previewPaint);
+                    break;
+                case MODE_RECT:
+                    canvas.drawRect(startX, startY, mx, my, previewPaint);
+                    break;
+                case MODE_CIRCLE:
+                    float radius = (float) Math.hypot(mx - startX, my - startY);
+                    canvas.drawCircle(startX, startY, radius, previewPaint);
+                    break;
+            }
         }
     }
 
@@ -166,6 +224,7 @@ public class MyCanvasView extends View {
                 startX = x;
                 startY = y;
                 mx = x; my = y;
+                isDrawing = true;
                 if (currentMode == MODE_PEN || currentMode == MODE_ERASER) {
                     mPath = new Path();
                     paths.add(new FingerPath(currentColor, currentBrushSize, mPath));
@@ -179,8 +238,12 @@ public class MyCanvasView extends View {
                     float dy = Math.abs(y - my);
                     if (dx >= TouchTolerance || dy >= TouchTolerance) {
                         mPath.quadTo(mx, my, (x + mx) / 2, (y + my) / 2);
-                        mx = x; my = y;
+                        mx = x;
+                        my = y;
                     }
+                } else if (currentMode == MODE_LINE || currentMode == MODE_RECT || currentMode == MODE_CIRCLE) {
+                    mx = x;
+                    my = y;
                 }
                 showCursor = true;
                 invalidate();
@@ -199,14 +262,16 @@ public class MyCanvasView extends View {
                         case MODE_CIRCLE:
                             float radius = (float) Math.hypot(x - startX, y - startY);
                             shape.addCircle(startX, startY, radius, Path.Direction.CW);
-                            showCursor = false;
                             break;
                     }
                     paths.add(new FingerPath(currentColor, currentBrushSize, shape));
+                    undonePaths.clear();
                 } else {
                     mPath.lineTo(mx, my);
+                    undonePaths.clear();
                 }
-                showCursor = true;
+                isDrawing = false;
+                showCursor = false;
                 invalidate();
                 break;
         }
