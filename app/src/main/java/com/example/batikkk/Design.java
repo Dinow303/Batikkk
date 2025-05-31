@@ -32,5 +32,5 @@ public class Design extends AppCompatActivity {
         btnGambar.setOnClickListener(v -> {
             startActivity(new Intent(Design.this, Draw.class));
         });
-    };
     }
+}

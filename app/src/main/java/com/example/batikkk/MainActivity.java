@@ -19,10 +19,10 @@ public class MainActivity extends AppCompatActivity {
 
         getWindow().setNavigationBarColor(ContextCompat.getColor(this, R.color.primary_dark));
 
-        btnIsiData = (LinearLayout)findViewById(R.id.btnIsiData);
-        btnDesain = (LinearLayout)findViewById(R.id.btnDesain);
-        btnStatusProduksi = (LinearLayout)findViewById(R.id.btnStatusProduksi);
-        btnStatusPengiriman = (LinearLayout)findViewById(R.id.btnStatusPengiriman);
+        btnIsiData = findViewById(R.id.btnIsiData);
+        btnDesain = findViewById(R.id.btnDesain);
+        btnStatusProduksi = findViewById(R.id.btnStatusProduksi);
+        btnStatusPengiriman = findViewById(R.id.btnStatusPengiriman);
 
         btnIsiData.setOnClickListener(v -> {
             startActivity(new Intent(MainActivity.this, IsiData.class));

@@ -18,5 +18,5 @@ public class StatusPengiriman extends AppCompatActivity {
         setContentView(R.layout.activity_status_pengiriman);
 
         getWindow().setNavigationBarColor(ContextCompat.getColor(this, R.color.primary_dark));
-        };
-    }
+        }
+}

@@ -18,5 +18,5 @@ public class StatusProduksi extends AppCompatActivity {
         setContentView(R.layout.activity_status_produksi);
 
         getWindow().setNavigationBarColor(ContextCompat.getColor(this, R.color.primary_dark));
-        };
-    }
+        }
+}

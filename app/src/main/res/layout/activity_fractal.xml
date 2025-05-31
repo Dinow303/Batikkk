@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp">
+
+    <ImageView
+        android:id="@+id/fractalView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:scaleType="fitCenter"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/duplicateRight"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHeight_percent="0.6" />
+
+    <Button
+        android:id="@+id/duplicateRight"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Gandakan Kanan 2x"
+        app:layout_constraintTop_toBottomOf="@id/fractalView"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="8dp"/>
+
+    <Button
+        android:id="@+id/duplicateUp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Gandakan Atas 2x"
+        app:layout_constraintTop_toBottomOf="@id/duplicateRight"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="8dp"/>
+
+    <Button
+        android:id="@+id/rotateAndDuplicate"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Putar lalu Gandakan"
+        app:layout_constraintTop_toBottomOf="@id/duplicateUp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="8dp"/>
+
+    <Button
+        android:id="@+id/diagonalDuplicate"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Gandakan Diagonal"
+        app:layout_constraintTop_toBottomOf="@id/rotateAndDuplicate"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="8dp"/>
+
+    <Button
+        android:id="@+id/customButton"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Kustom"
+        app:layout_constraintTop_toBottomOf="@id/diagonalDuplicate"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="8dp"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

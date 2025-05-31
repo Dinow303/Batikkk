@@ -2,6 +2,8 @@ package com.example.batikkk;
 
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
+import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.text.SpannableString;
@@ -23,10 +25,7 @@ import com.google.android.material.button.MaterialButton;
 
 public class Draw extends AppCompatActivity {
     MyCanvasView myCanvasView;
-    private Shape Shape;
     private LinearLayout Shapes;
-    private LinearLayout pen, eraser;
-    private View selectedTool;
 
 
     @SuppressLint("MissingInflatedId")
@@ -44,7 +43,6 @@ public class Draw extends AppCompatActivity {
 
         getWindow().setNavigationBarColor(ContextCompat.getColor(this, R.color.primary_dark));
 
-        //Tools
         findViewById(R.id.clear).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -86,6 +84,19 @@ public class Draw extends AppCompatActivity {
                 myCanvasView.redo();
             }
         });
+
+        LinearLayout saveButton = findViewById(R.id.SaveButton);
+        saveButton.setOnClickListener(v -> {
+            Bitmap bitmap = myCanvasView.getBitmap();
+
+            // Simpan bitmap sementara
+            BitmapStorage.setBitmap(bitmap);
+
+            // Buka FractalActivity
+            Intent intent = new Intent(Draw.this, FractalActivity.class);
+            startActivity(intent);
+        });
+
 
 
         LinearLayout brushSizeBtn = findViewById(R.id.brushSize);

@@ -33,23 +33,24 @@ public class MyCanvasView extends View {
     public static final int COLOR_ERASER = Color.WHITE;
     public static final int BACKGROUND_COLOR = Color.WHITE;
 
-    private ArrayList<FingerPath> paths = new ArrayList<>();
-    private ArrayList<FingerPath> undonePaths = new ArrayList<>();
+    private final ArrayList<FingerPath> paths = new ArrayList<>();
+    private final ArrayList<FingerPath> undonePaths = new ArrayList<>();
     private Path mPath;
 
     private Bitmap mBitmap;
     private Canvas mCanvas;
     private Paint mPaint;
-    private Paint mBitmapPaint = new Paint(Paint.DITHER_FLAG);
+    private final Paint mBitmapPaint = new Paint(Paint.DITHER_FLAG);
 
 
     private float startX, startY;
     private float mx, my;
-    private float cursorX = -1, cursorY = -1;
+    private final float cursorX = -1;
+    private final float cursorY = -1;
     private boolean showCursor = false;
-    private PointF startPoint = new PointF();
-    private boolean isDrawingShape = false;
-    private Paint previewPaint;
+    private final PointF startPoint = new PointF();
+    private final boolean isDrawingShape = false;
+    private final Paint previewPaint;
     private boolean isDrawing = false;
     private int lastUsedColor = Color.BLACK;
 
@@ -135,19 +136,18 @@ public class MyCanvasView extends View {
     }
 
     public void setToolMode(int mode) {
-        // Kalau sebelumnya pakai pen, simpan warnanya
         if (currentMode != MODE_ERASER) {
             lastUsedColor = Color.BLACK;
         }
 
         currentMode = mode;
 
-        // Kalau sekarang masuk mode eraser
+
         if (mode == MODE_ERASER) {
-            currentColor = Color.WHITE; // atau warna background kamu
+            currentColor = Color.WHITE;
         }
 
-        // Kalau sekarang masuk mode shape atau pen, dan sebelumnya pakai eraser
+
         if (mode != MODE_ERASER && currentColor == Color.WHITE) {
             currentColor = lastUsedColor;
         }
@@ -295,13 +295,8 @@ public class MyCanvasView extends View {
     }
     private static final float TouchTolerance = 4;
 
-    private class DrawPath {
-        Path path;
-        Paint paint;
-
-        DrawPath(Path path, Paint paint) {
-            this.path = path;
-            this.paint = paint;
-        }
+    public Bitmap getBitmap() {
+        return mBitmap;
     }
+
 }

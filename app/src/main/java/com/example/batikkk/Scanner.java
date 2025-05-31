@@ -18,5 +18,5 @@ public class Scanner extends AppCompatActivity {
         setContentView(R.layout.activity_scanner);
 
         getWindow().setNavigationBarColor(ContextCompat.getColor(this, R.color.primary_dark));
-        };
-    }
+        }
+}
