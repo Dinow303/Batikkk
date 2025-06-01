@@ -34,17 +34,16 @@
     <LinearLayout
         android:id="@+id/rowDesain"
         android:layout_width="0dp"
-        android:layout_height="470dp"
+        android:layout_height="wrap_content"
         android:layout_marginVertical="4dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
+        android:layout_marginHorizontal="16dp"
         android:gravity="center"
         android:orientation="vertical"
         android:weightSum="2"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toBottomOf="@id/Title">
 
         <TextView
             android:layout_width="wrap_content"
@@ -55,7 +54,7 @@
         <LinearLayout
             android:id="@+id/btnScanner"
             android:layout_width="match_parent"
-            android:layout_height="200dp"
+            android:layout_height="150dp"
             android:layout_marginHorizontal="4dp"
             android:layout_marginVertical="10dp"
             android:background="@drawable/dark_blue_button"
@@ -75,7 +74,7 @@
         <LinearLayout
             android:id="@+id/btnGambar"
             android:layout_width="match_parent"
-            android:layout_height="200dp"
+            android:layout_height="150dp"
             android:layout_marginHorizontal="4dp"
             android:layout_marginVertical="10dp"
             android:background="@drawable/dark_blue_button"
@@ -87,6 +86,25 @@
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:text="Gambar Desain"
+                android:textColor="@color/white"
+                android:textSize="20sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/btnGalery"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:layout_marginHorizontal="4dp"
+            android:layout_marginVertical="10dp"
+            android:background="@drawable/dark_blue_button"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="Galery"
                 android:textColor="@color/white"
                 android:textSize="20sp" />
         </LinearLayout>
