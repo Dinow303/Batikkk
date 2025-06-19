@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "413473777342",
+    "project_id": "fraktikal",
+    "storage_bucket": "fraktikal.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:413473777342:android:4eaf4755dfaa0de28c60ef",
+        "android_client_info": {
+          "package_name": "com.example.batikkk"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDeeJDSsan4Dy3ngDmgYLh6OLrrRFxlRqU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
