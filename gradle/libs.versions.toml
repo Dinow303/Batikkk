@@ -1,5 +1,5 @@
 [versions]
-agp = "8.7.3"
+agp = "8.10.1"
 cameraCore = "1.4.1"
 cameraViewfinderCore = "1.4.0-alpha07"
 coilCompose = "2.5.0"
@@ -14,6 +14,10 @@ playServicesMlkitDocumentScanner = "16.0.0-beta1"
 supportAnnotations = "28.0.0"
 annotation = "1.9.1"
 kotlin = "1.9.24"
+lifecycleLivedataKtx = "2.6.1"
+lifecycleViewmodelKtx = "2.6.1"
+googleGmsGoogleServices = "4.4.2"
+firebaseAuth = "23.2.1"
 
 [libraries]
 camera-camera2 = { module = "androidx.camera:camera-camera2", version.ref = "cameraCore" }
@@ -34,8 +38,12 @@ constraintlayout = { group = "androidx.constraintlayout", name = "constraintlayo
 play-services-mlkit-document-scanner = { module = "com.google.android.gms:play-services-mlkit-document-scanner", version.ref = "playServicesMlkitDocumentScanner" }
 support-annotations = { group = "com.android.support", name = "support-annotations", version.ref = "supportAnnotations" }
 annotation = { group = "androidx.annotation", name = "annotation", version.ref = "annotation" }
+lifecycle-livedata-ktx = { group = "androidx.lifecycle", name = "lifecycle-livedata-ktx", version.ref = "lifecycleLivedataKtx" }
+lifecycle-viewmodel-ktx = { group = "androidx.lifecycle", name = "lifecycle-viewmodel-ktx", version.ref = "lifecycleViewmodelKtx" }
+firebase-auth = { group = "com.google.firebase", name = "firebase-auth", version.ref = "firebaseAuth" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
 kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
+google-gms-google-services = { id = "com.google.gms.google-services", version.ref = "googleGmsGoogleServices" }
 
